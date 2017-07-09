@@ -9,15 +9,15 @@ import org.springframework.web.client.RestTemplate;
 @RestController
 public class OrderController {
 
-//    @Value("${user.service.url}")
-//    private String userService;
+    @Value("${user.service.url}")
+    private String userService;
 
     @Autowired
     private RestTemplate restTemplate;
 
     @GetMapping("/order")
     public String index(){
-        String response = restTemplate.getForEntity("http://localhost:8080/user",String.class).getBody();
+        String response = restTemplate.getForEntity(userService+"/user",String.class).getBody();
         System.out.println(response);
         return response;
     }

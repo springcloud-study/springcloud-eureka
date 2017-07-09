@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDateTime;
+
 
 @RestController
 public class UserController {
@@ -21,8 +23,8 @@ public class UserController {
     @RequestMapping(value="/user",method = RequestMethod.GET)
     public String index(){
         ServiceInstance instance = client.getLocalServiceInstance();
-        logger.info("/user,host:"+instance.getHost()+",service id:"+instance.getServiceId());
-        return "hello user";
+        logger.info("/user,host:"+instance.getHost()+",service id:"+instance.getServiceId()+",port:"+instance.getPort());
+        return "hello user, local time="+ LocalDateTime.now();
     }
 
 
